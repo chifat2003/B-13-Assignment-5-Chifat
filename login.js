@@ -4,7 +4,7 @@ const password = document.querySelector("#password");
 const signIn = document.querySelector("#sign-in");
 
 function onGoing() {
-    window.location.href = '/main.html'
+    window.location.href = './main.html'
 }
 
 signIn.addEventListener("click", (e) => {
