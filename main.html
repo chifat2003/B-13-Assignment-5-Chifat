@@ -37,14 +37,14 @@
     <!-- main-body -->
 
     <!-- modal -->
-    <button class="btn" onclick="issueModal.showModal()">open modal</button>
+    <button onclick="issueModal.showModal()"></button>
     <dialog id="issueModal" class="modal">
         <div class="modal-box">
             <h2 id="modalTitle" class="font-semibold text-2xl">Fix broken image uploads</h2>
             <div class="flex text-gray-500 items-center gap-4 mt-4 text-sm">
                 <div class="bg-green-600 text-amber-50 px-2 py-0.5 rounded-3xl">Opened</div>
-                <p id="modalAuthor">Opened by Fahim Ahmed</p>
-                <p id="modalDate">22/02/2026</p>
+                <p id="modalAuthor" class="text-gray-600 text-sm">Opened by Fahim Ahmed</p>
+                <p id="modalDate" class="text-gray-600 text-sm">22/02/2026</p>
             </div>
             <div>
                 <div id="card-labels" class="flex gap-2 mt-2">
