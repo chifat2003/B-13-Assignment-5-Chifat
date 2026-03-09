@@ -27,8 +27,8 @@
             </div>
         </div>
         <div class="flex gap-2">
-            <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
+            <input type="text" id="searchInput" class="input input-primary" placeholder="Search issues...">
+            <button id="searchBtn" class="btn btn-primary">Search</button>
         </div>
     </div>
     <!-- navbar -->
@@ -48,13 +48,16 @@
             </div>
             <div>
                 <div id="card-labels" class="flex gap-2 mt-2">
-                    <span id="label1" class="bg-blue-200 text-blue-800 text-xs font-medium px-2 py-1 rounded-3xl">bug</span>
-                    <span id="label2" class="bg-green-200 text-green-800 text-xs font-medium px-2 py-1 rounded-3xl">enhancement</span>
+                    <span id="label1"
+                        class="bg-blue-200 text-blue-800 text-xs font-medium px-2 py-1 rounded-3xl">bug</span>
+                    <span id="label2"
+                        class="bg-green-200 text-green-800 text-xs font-medium px-2 py-1 rounded-3xl">enhancement</span>
                 </div>
             </div>
 
             <div class="text-sm text-gray-600 my-4">
-                <p id="modalDescription">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+                <p id="modalDescription">The navigation menu doesn't collapse properly on mobile devices. Need to fix
+                    the responsive behavior.</p>
             </div>
 
             <div class="grid grid-cols-2 bg-amber-50 rounded my-2">

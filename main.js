@@ -20,6 +20,11 @@ let modalPriority = document.querySelector("#modalPriority");
 let label1 = document.querySelector("#label1");
 let label2 = document.querySelector("#label2");
 
+
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
+
 let allIssues = [];
 
 
@@ -164,3 +169,22 @@ async function openModal(id) {
     label1.textContent = modalData.labels?.[0] ?? '';
     label2.textContent = modalData.labels?.[1] ?? '';
 }
+
+
+
+async function searchIssues(query) {
+
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${query}`);
+    const data = await res.json();
+    displayIssues(data.data);
+
+}
+
+searchBtn.addEventListener("click", () => {
+    const query = searchInput.value.trim();
+    if (query) {
+        searchIssues(query);
+    } else {
+        displayIssues(allIssues);
+    }
+});
