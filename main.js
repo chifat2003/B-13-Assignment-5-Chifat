@@ -9,7 +9,21 @@ let openFilterBtn = document.querySelector("#open-filter-btn")
 let closedFilterBtn = document.querySelector("#closed-filter-btn")
 let filteredCard = document.querySelector("#filtered-card")
 
+
+let issueModal = document.querySelector("#issueModal");
+let modalTitle = document.querySelector("#modalTitle");
+let modalAuthor = document.querySelector("#modalAuthor");
+let modalDate = document.querySelector("#modalDate");
+let modalDescription = document.querySelector("#modalDescription");
+let modalAssignee = document.querySelector("#modalAssignee");
+let modalPriority = document.querySelector("#modalPriority");
+let label1 = document.querySelector("#label1");
+let label2 = document.querySelector("#label2");
+
 let allIssues = [];
+
+
+
 
 
 function toggleBtn(id) {
@@ -107,7 +121,7 @@ function displayIssues(issues) {
                 </div>
 
                 <div class="font-semibold text-lg mt-2 space-y-2">
-                    <h2>${issue.title}</h2>
+                    <h2 onclick="openModal(${issue.id})">${issue.title}</h2>
                     <p class="font-normal text-sm line-clamp-2">${issue.description || ''}</p>
                 </div>
 
@@ -126,4 +140,27 @@ function displayIssues(issues) {
     });
 }
 
+
 loadIssues();
+
+
+async function openModal(id) {
+    issueModal.showModal();
+    // console.log("Modal opened for issue:", id);
+
+    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+    const data = await res.json();
+    const modalData = data.data;
+    // console.log(modalData);
+
+
+    modalTitle.textContent = modalData.title;
+    modalAuthor.textContent = `Opened by ${modalData.author}`;
+    modalDate.textContent = new Date(modalData.createdAt).toLocaleDateString();
+    modalDescription.textContent = modalData.description;
+    modalAssignee.textContent = modalData.assignee;
+    modalPriority.textContent = modalData.priority;
+
+    label1.textContent = modalData.labels?.[0] ?? '';
+    label2.textContent = modalData.labels?.[1] ?? '';
+}

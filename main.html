@@ -36,6 +36,48 @@
 
     <!-- main-body -->
 
+    <!-- modal -->
+    <button class="btn" onclick="issueModal.showModal()">open modal</button>
+    <dialog id="issueModal" class="modal">
+        <div class="modal-box">
+            <h2 id="modalTitle" class="font-semibold text-2xl">Fix broken image uploads</h2>
+            <div class="flex text-gray-500 items-center gap-4 mt-4 text-sm">
+                <div class="bg-green-600 text-amber-50 px-2 py-0.5 rounded-3xl">Opened</div>
+                <p id="modalAuthor">Opened by Fahim Ahmed</p>
+                <p id="modalDate">22/02/2026</p>
+            </div>
+            <div>
+                <div id="card-labels" class="flex gap-2 mt-2">
+                    <span id="label1" class="bg-blue-200 text-blue-800 text-xs font-medium px-2 py-1 rounded-3xl">bug</span>
+                    <span id="label2" class="bg-green-200 text-green-800 text-xs font-medium px-2 py-1 rounded-3xl">enhancement</span>
+                </div>
+            </div>
+
+            <div class="text-sm text-gray-600 my-4">
+                <p id="modalDescription">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+            </div>
+
+            <div class="grid grid-cols-2 bg-amber-50 rounded my-2">
+                <div class="m-2">
+                    <p>Assigne:</p>
+                    <p id="modalAssignee">Fahim Ahmed</p>
+                </div>
+
+                <div class="m-2">
+                    <p>Priority:</p>
+                    <span id="modalPriority" class="bg-red-300 text-gray-500 rounded-3xl px-4">HIGH</span>
+                </div>
+            </div>
+
+
+            <form method="dialog" class="flex justify-end">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn bg-red-700 text-amber-50">Close</button>
+            </form>
+        </div>
+    </dialog>
+    <!-- modal -->
+
     <!-- filter-button -->
 
 
@@ -69,17 +111,22 @@
             </div>
         </div>
         <div id="loading" class="flex justify-center">
-            <span itemid="loading" class="loading loading-infinity loading-xl"></span>
+            <span itemid="loading" class="loading loading-infinity loading-xl mt-12"></span>
         </div>
 
         <div id="card-container" class="bg-gray-100 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
 
             <section id="filtered-card" class="hidden">
-            
+
 
             </section>
 
-            
+
+
+
+            <!-- Open the modal using ID.showModal() method -->
+
+
             <!-- closed -->
             <!-- <div class="card border-t-3 border-purple-800 rounded-lg shadow-sm bg-white">
                 <div class="m-4 space-y-2">
