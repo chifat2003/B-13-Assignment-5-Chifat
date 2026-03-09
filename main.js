@@ -1,15 +1,68 @@
+
 const cardContainer = document.getElementById('card-container');
+const totalCount = document.getElementById('total-count');
+let loadingSpinner = document.querySelector("#loading")
+
+
+let allFilterBtn = document.querySelector("#all-filter-btn")
+let openFilterBtn = document.querySelector("#open-filter-btn")
+let closedFilterBtn = document.querySelector("#closed-filter-btn")
+let filteredCard = document.querySelector("#filtered-card")
+
+let allIssues = [];
+
+
+function toggleBtn(id) {
+
+    currentStatus = id;
+
+    allFilterBtn.classList.remove('btn-primary')
+    openFilterBtn.classList.remove('btn-primary')
+    closedFilterBtn.classList.remove('btn-primary')
+
+    allFilterBtn.classList.add('btn-soft')
+    openFilterBtn.classList.add('btn-soft')
+    closedFilterBtn.classList.add('btn-soft')
+
+    let selected = document.getElementById(id)
+    selected.classList.remove('btn-soft')
+    selected.classList.add('btn-primary')
+
+    // countNumber.innerText = interviewCountDashboard.length;
+
+    
+    
+    if (id == 'open-filter-btn') {
+        const filtered = allIssues.filter(issue => issue.status === 'open');
+        displayIssues(filtered);
+    }
+    else if (id == 'all-filter-btn') {
+        displayIssues(allIssues);
+    }
+    else if (id == 'closed-filter-btn') {
+        const filtered = allIssues.filter(issue => issue.status === 'closed');
+        displayIssues(filtered);
+    }
+}
+
 
 async function loadIssues() {
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await res.json();
-    displayIssues(data.data);
+    // displayIssues(data.data);
+    allIssues = data.data;
+    displayIssues(allIssues);
+    loadingSpinner.classList.add('hidden');
+    
+
 }
 
 function displayIssues(issues) {
+    cardContainer.innerHTML = '';
+    totalCount.textContent = issues.length;
     issues.forEach(issue => {
         const isOpen = issue.status === 'open';
-
+        // console.log(issues.length);
 
         let borderColor;
         let iconClass;

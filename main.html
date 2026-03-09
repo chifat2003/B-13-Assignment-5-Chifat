@@ -40,9 +40,12 @@
 
 
     <div id="filter-btn-container" class="bg-white w-4/5 m-auto mt-15 rounded shadow-sm flex justify-start gap-4 p-4">
-        <button class="filter-btn btn btn-primary" id="all-filter-btn">All</button>
-        <button class="filter-btn btn btn-soft" id="open-filter-btn">Open</button>
-        <button class="filter-btn btn btn-soft" id="closed-filter-btn">Closed</button>
+        <button onclick="toggleBtn('all-filter-btn')" class="filter-btn btn btn-primary"
+            id="all-filter-btn">All</button>
+        <button onclick="toggleBtn('open-filter-btn')" class="filter-btn btn btn-soft"
+            id="open-filter-btn">Open</button>
+        <button onclick="toggleBtn('closed-filter-btn')" class="filter-btn btn btn-soft"
+            id="closed-filter-btn">Closed</button>
     </div>
 
 
@@ -53,7 +56,7 @@
             <div class="flex items-center m-4">
                 <img src="./assets/Aperture.png" alt="icon" class="w-10 h-10 mr-2" />
                 <div>
-                    <p class="text-lg font-semibold">50 Issues</p>
+                    <p class="text-lg font-semibold"><span id="total-count">0</span> Issues</p>
                     <p id="issue-count" class="text-sm text-gray-500 ">Track and manage your project issues</p>
                 </div>
             </div>
@@ -65,9 +68,18 @@
                 </p>
             </div>
         </div>
-
+        <div id="loading" class="flex justify-center">
+            <span itemid="loading" class="loading loading-infinity loading-xl"></span>
+        </div>
 
         <div id="card-container" class="bg-gray-100 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+
+            <section id="filtered-card" class="hidden">
+            
+
+            </section>
+
+            
             <!-- closed -->
             <!-- <div class="card border-t-3 border-purple-800 rounded-lg shadow-sm bg-white">
                 <div class="m-4 space-y-2">
