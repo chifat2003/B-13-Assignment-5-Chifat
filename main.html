@@ -1,15 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GitHub Issues Tracker</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+    </style>
 
 </head>
-<body>
+
+<body class="bg-gray-50 min-h-screen">
+
+    <!-- navbar -->
+    <div class="navbar bg-base-100 shadow-sm pl-8 pr-8">
+        <div class="flex-1">
+            <div class="flex items-center gap-2">
+                <img src="./assets/github-logo.png" alt="GitHub Logo" class="w-8 h-8" />
+                <h2 class="text-2xl font-semibold">GitHub Issues Tracker</h2>
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+            <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
+        </div>
+    </div>
+    <!-- navbar -->
+
+
+    <!-- main-body -->
+
+    <!-- filter-button -->
+
+
+    <div id="filter-btn-container" class="bg-white w-4/5 m-auto mt-15 rounded shadow-sm flex justify-start gap-4 p-4">
+        <button class="filter-btn btn btn-primary" id="all-filter-btn">All</button>
+        <button class="filter-btn btn btn-soft" id="open-filter-btn">Open</button>
+        <button class="filter-btn btn btn-soft" id="closed-filter-btn">Closed</button>
+    </div>
+
+
+    <!-- filter-button -->
+
+    <div id="main-container" class="w-4/5 m-auto">
+        <div id="data-count" class="flex justify-between shadow-2xl items-center bg-white mt-4 rounded">
+            <div class="flex items-center m-4">
+                <img src="./assets/Aperture.png" alt="icon" class="w-10 h-10 mr-2" />
+                <div>
+                    <p class="text-lg font-semibold">50 Issues</p>
+                    <p id="issue-count" class="text-sm text-gray-500 ">Track and manage your project issues</p>
+                </div>
+            </div>
+
+            <div>
+                <p>
+                    <span class="mx-2"><i class="fa-solid fa-circle text-xs mx-1 text-green-600"></i>Open</span>
+                    <span class="mx-2"><i class="fa-solid fa-circle text-xs mx-1 text-purple-800"></i>Closed</span>
+                </p>
+            </div>
+        </div>
+
+
+        <div id="card-container" class="bg-gray-100 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+            <!-- closed -->
+            <div class="card border-t-3 border-purple-800 rounded-lg shadow-sm bg-white">
+                <div class="m-4 space-y-2">
+                    <div id="card-status" class="flex justify-between">
+                        <i class="fa-regular fa-circle-check text-purple-800"></i>
+                        <span id="card-status-text" class="bg-red-300 text-gray-500 rounded-3xl px-4">HIGH</span>
+                    </div>
+
+                    <div id="card-title" class="font-semibold text-lg mt-2 space-y-2">
+                        <h2>Fix navigation menu on mobile devices</h2>
+                        <p class="font-normal text-sm">The navigation menu doesn't collapse properly on mobile
+                            devices...</p>
+                    </div>
+
+                    <div>
+                        <div id="card-labels" class="flex gap-2 mt-2">
+                            <span class="bg-blue-200 text-blue-800 text-xs font-medium px-2 py-1 rounded-3xl">bug</span>
+                            <span
+                                class="bg-green-200 text-green-800 text-xs font-medium px-2 py-1 rounded-3xl">enhancement</span>
+                        </div>
+                    </div>
+
+                </div>
+                <hr class="opacity-20">
+                <div id="card-credit" class="m-4 text-sm text-gray-500 space-y-3">
+                    <p>#1 by john_doe</p>
+                    <p>1/15/2024</p>
+                </div>
+            </div>
+
+            <!-- closed -->
+
+            <!-- Open -->
+            <div class="card border-t-3 border-green-600 rounded-lg shadow-sm bg-white">
+                <div class="m-4 space-y-2">
+                    <div id="card-status" class="flex justify-between">
+                        <i class="fa-regular fa-circle text-green-600"></i>
+                        <span id="card-status-text" class="bg-purple-300 text-gray-500 rounded-3xl px-4">Low</span>
+                    </div>
+
+                    <div id="card-title" class="font-semibold text-lg mt-2 space-y-2">
+                        <h2>Fix navigation menu on mobile devices</h2>
+                        <p class="font-normal text-sm">The navigation menu doesn't collapse properly on mobile
+                            devices...</p>
+                    </div>
+
+                    <div>
+                        <div id="card-labels" class="flex gap-2 mt-2">
+                            <span class="bg-blue-200 text-blue-800 text-xs font-medium px-2 py-1 rounded-3xl">bug</span>
+                            <span
+                                class="bg-green-200 text-green-800 text-xs font-medium px-2 py-1 rounded-3xl">enhancement</span>
+                        </div>
+                    </div>
+
+                </div>
+                <hr class="opacity-20">
+                <div id="card-credit" class="m-4 text-sm text-gray-500 space-y-3">
+                    <p>#1 by john_doe</p>
+                    <p>1/15/2024</p>
+                </div>
+            </div>
+            <!-- Open -->
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- main-body -->
+
 
     <script src="./main.js"></script>
 </body>
+
 </html>
